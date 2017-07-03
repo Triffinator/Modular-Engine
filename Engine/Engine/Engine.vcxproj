@@ -142,6 +142,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <ClInclude Include="Entity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Entity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+=======
+>>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
     <ClInclude Include="Factory.h" />
   </ItemGroup>
   <ItemGroup>

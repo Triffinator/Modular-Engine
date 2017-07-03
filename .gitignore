@@ -31,3 +31,13 @@
 *.out
 *.app
 /Engine/*.opendb
+
+# Custom
+*.vcxproj
+*.filters
+*.db
+*.suo
+Engine/.vs/Engine/v14/.suo
+Engine/Engine.VC.db
+Engine/Engine/Engine.vcxproj
+Engine/Engine/Engine.vcxproj.filters
