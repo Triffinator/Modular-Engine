@@ -37,6 +37,7 @@
 *.filters
 *.db
 *.suo
+*/Debug
 Engine/.vs/Engine/v14/.suo
 Engine/Engine.VC.db
 Engine/Engine/Engine.vcxproj
