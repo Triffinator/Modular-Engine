@@ -31,6 +31,9 @@
 *.out
 *.app
 /Engine/*.opendb
+
+# Custom
 *.vcxproj
 *.filters
 *.db
+.suo
