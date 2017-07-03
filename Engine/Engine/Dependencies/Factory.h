@@ -5,7 +5,7 @@
 #include <functional>
 #include <queue>
 
-//#include "Entity.h"
+#include "Entity.h"
 
 namespace ECS
 {
@@ -14,10 +14,13 @@ namespace ECS
         public:
             typedef std::map<std::string, std::vector<std::string>> ComponentInfo;
  
-            //void Init();
+            void Init(const unsigned long maxID);
 
             Factory();
             ~Factory();
+
+            const unsigned long GetNextEID();
+
             //void DestroyEntity(const Entity& e);
             //bool AddComponent(const Entity& e, ComponentInfo info);
             //bool RemoveComponent(const Entity& e, const std::string& componentType);

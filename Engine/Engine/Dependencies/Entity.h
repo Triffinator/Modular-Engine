@@ -27,5 +27,5 @@ namespace ECS
 	        * The identification number of the entity
 	        */
 	        unsigned long m_EID;
-    };   
+    };
 }
