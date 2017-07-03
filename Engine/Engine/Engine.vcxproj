@@ -142,17 +142,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <ClInclude Include="Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
-=======
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="Factory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Factory.cpp" />
->>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

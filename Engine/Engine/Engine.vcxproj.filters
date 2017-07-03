@@ -16,7 +16,11 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClInclude Include="Entity.h">
+=======
+    <ClInclude Include="Factory.h">
+>>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
 =======
     <ClInclude Include="Factory.h">
 >>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
@@ -25,7 +29,11 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="Entity.cpp">
+=======
+    <ClCompile Include="Factory.cpp">
+>>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
 =======
     <ClCompile Include="Factory.cpp">
 >>>>>>> 3ac55141db1ec85dbaf8d1eb66224c6692026993
