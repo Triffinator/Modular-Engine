@@ -1,12 +1,15 @@
 #include "Factory.h"
 
-
-
-Factory::Factory()
+ECS::Factory::Factory()
 {
 }
 
 
-Factory::~Factory()
+ECS::Factory::~Factory()
 {
+}
+
+bool ECS::Factory::AddTransformComponent(const ECS::Entity & e, const ComponentInfo & info)
+{
+    return false;
 }

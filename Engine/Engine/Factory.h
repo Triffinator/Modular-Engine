@@ -17,7 +17,7 @@ namespace ECS
             //void Init();
 
             Factory();
-            ~Factory();
+
             //void DestroyEntity(const Entity& e);
             //bool AddComponent(const Entity& e, ComponentInfo info);
             //bool RemoveComponent(const Entity& e, const std::string& componentType);
@@ -42,7 +42,7 @@ namespace ECS
                              
             //MaterialManager* m_materialManager;
 
-            //bool AddTransformComponent(const Entity& e, const ComponentInfo& info);
+            bool AddTransformComponent(const ECS::Entity& e, const ComponentInfo& info);
             //bool AddRenderComponent(const Entity& e, const ComponentInfo& info);
             //bool AddCameraComponent(const Entity& e, const ComponentInfo& info);
             //bool AddPhysicsComponent(const Entity& e, const ComponentInfo& info);
