@@ -1,5 +1,2 @@
 ﻿  main.cpp
-  Factory.cpp
-c:\users\aiden\documents\projects\c++\modular-engine\engine\engine\dependencies\factory.cpp(5): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
   Engine.vcxproj -> C:\Users\Aiden\Documents\Projects\C++\Modular-Engine\Engine\Debug\Engine.exe
