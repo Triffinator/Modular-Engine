@@ -4,6 +4,7 @@
 #include <map>
 #include <functional>
 #include <queue>
+#include <iostream>
 
 //Base Entity
 #include "Entity.h"
@@ -20,7 +21,7 @@ namespace ECS
         public:
             typedef std::map<std::string, std::vector<std::string>> ComponentInfo;
             typedef std::priority_queue<unsigned long, std::vector<unsigned long>, greater> queue;
-            typedef std::function<bool(const Entity&, const ComponentInfo&)> AddComponentHandler;
+            typedef std::function<bool(Entity&, const ComponentInfo&)> AddComponentHandler;
  
             void Init(const unsigned long maxID);
 
@@ -30,8 +31,8 @@ namespace ECS
             const unsigned long GetNextEID();           
 
             void DestroyEntity(const Entity& e);
-            bool AddComponent(const Entity& e, ComponentInfo info);
-            bool RemoveComponent(const Entity& e, const std::string& componentType);
+            bool AddComponent(Entity & e, const std::string & type, ComponentInfo info);
+            bool RemoveComponent(const Entity& e, const std::string& type);
             
             TransformManager& GetTransformComponentManager();
             //RenderComponentManager& GetRendercomponentManager();
@@ -40,6 +41,7 @@ namespace ECS
             //ScriptComponentManager& GetAIComponentManager();
 
             queue GetQueue();
+            
         private:
 
             std::map<std::string, AddComponentHandler> m_AddComponentHandlers;
@@ -54,6 +56,7 @@ namespace ECS
                              
             //MaterialManager* m_materialManager;
 
+            bool AddTransformComponent(Entity & e, const ComponentInfo & info);
             //bool AddRenderComponent(const Entity& e, const ComponentInfo& info);
             //bool AddCameraComponent(const Entity& e, const ComponentInfo& info);
             //bool AddPhysicsComponent(const Entity& e, const ComponentInfo& info);
