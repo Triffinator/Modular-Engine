@@ -10,7 +10,7 @@ namespace ECS
         static class ComponentAdders
         {
             public:
-                bool AddTransformComponent(const Entity & e, const ECS::Factory::ComponentInfo & info);
+                static bool AddTransformComponent(const Entity & e, const ECS::Factory::ComponentInfo & info);
         };
     }
 }
