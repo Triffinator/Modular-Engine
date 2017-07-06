@@ -1,8 +1,16 @@
 #pragma once
-class TransformComponent
-{
-public:
-    TransformComponent();
-    ~TransformComponent();
-};
 
+namespace ECS
+{
+    class TransformComponent
+    {
+        public:
+            TransformComponent();
+            ~TransformComponent();
+
+        private:
+            //Position
+            //Orientation
+            //Scale
+    };
+}

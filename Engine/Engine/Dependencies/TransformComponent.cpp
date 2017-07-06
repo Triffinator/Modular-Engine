@@ -1,12 +1,10 @@
 #include "TransformComponent.h"
 
-
-
-TransformComponent::TransformComponent()
+ECS::TransformComponent::TransformComponent()
 {
 }
 
 
-TransformComponent::~TransformComponent()
+ECS::TransformComponent::~TransformComponent()
 {
 }

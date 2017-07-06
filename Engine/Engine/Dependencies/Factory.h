@@ -27,7 +27,7 @@ namespace ECS
             Factory();
             ~Factory();
 
-            const unsigned long GetNextEID();
+            const unsigned long GetNextEID();           
 
             void DestroyEntity(const Entity& e);
             bool AddComponent(const Entity& e, ComponentInfo info);
@@ -54,10 +54,11 @@ namespace ECS
                              
             //MaterialManager* m_materialManager;
 
-            bool AddTransformComponent(const Entity& e, const ComponentInfo& info);
             //bool AddRenderComponent(const Entity& e, const ComponentInfo& info);
             //bool AddCameraComponent(const Entity& e, const ComponentInfo& info);
             //bool AddPhysicsComponent(const Entity& e, const ComponentInfo& info);
             //bool AddScriptComponent(const Entity& e, const ComponentInfo& info);
+
+            void DestroyData(Entity & e);
     };
 }

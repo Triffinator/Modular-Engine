@@ -24,12 +24,17 @@ const unsigned long ECS::Factory::GetNextEID()
     return eid;
 }
 
+void ECS::Factory::DestroyData(Entity & e)
+{
+    m_transformComponentManager.DestroyComponentData(e);
+}
+
 void ECS::Factory::DestroyEntity(const Entity & e)
 {
     Entity temp = e;
 
     m_freeIndices.push(temp.GetEID());//Add EID to Queue
-    //Sort();//Sort Queue
+    //Destroy Component Data
     delete &e;
 }
 
@@ -43,7 +48,7 @@ bool ECS::Factory::RemoveComponent(const Entity & e, const std::string & compone
     return false;
 }
 
-TransformManager & ECS::Factory::GetTransformComponentManager()
+ECS::TransformManager & ECS::Factory::GetTransformComponentManager()
 {
     return m_transformComponentManager;
 }
@@ -53,7 +58,4 @@ ECS::Factory::queue ECS::Factory::GetQueue()
     return m_freeIndices;
 }
 
-bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo & info)
-{
-    return false;
-}
+
