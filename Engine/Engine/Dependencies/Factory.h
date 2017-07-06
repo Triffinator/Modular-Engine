@@ -35,10 +35,10 @@ namespace ECS
             bool RemoveComponent(const Entity& e, const std::string& type);
             
             TransformManager& GetTransformComponentManager();
-            //RenderComponentManager& GetRendercomponentManager();
-            //CameraComponentManager& GetCameraComponentManger();
-            //PhysicsComponentManager& GetPhysicsComponentManager();
-            //ScriptComponentManager& GetAIComponentManager();
+            //RenderManager& GetRendercomponentManager();
+            //CameraManager& GetCameraComponentManger();
+            //PhysicsManager& GetPhysicsComponentManager();
+            //ScriptManager& GetAIComponentManager();
 
             queue GetQueue();
             
