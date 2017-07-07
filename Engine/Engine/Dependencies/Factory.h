@@ -1,4 +1,6 @@
 #pragma once
+#include <ios>
+#include <sstream>
 #include <cstdlib>
 #include <vector>
 #include <map>
@@ -13,6 +15,48 @@
 #include "TransformManager.h"
 
 #define greater std::greater<unsigned long>
+
+inline std::istream& operator >> (std::stringstream& str, ECS::Maths::vec3& value)
+{
+    return str >> value.x >> value.y >> value.z;
+}
+
+inline int ToInt(const std::string& str)
+{
+    int value;
+    std::stringstream(str) >> value;
+    return value;
+}
+
+inline float ToFloat(const std::string& str)
+{
+    float value;
+    std::stringstream(str) >> value;
+    return value;
+}
+
+inline ECS::Maths::vec2 ToVec2(const std::string& str)
+{
+    ECS::Maths::vec2 vec;
+    std::stringstream(str) >> vec.x >> vec.y;
+    return vec;
+}
+
+inline ECS::Maths::vec3 ToVec3(const std::string& str)
+{
+    ECS::Maths::vec3 vec;
+    std::stringstream(str) >> vec.x >> vec.y >> vec.z;
+    return vec;
+}
+
+inline ECS::Maths::mat3 ToMat3(const std::string& str)
+{
+    float temp[9];
+    ECS::Maths::mat3 mat;
+    std::stringstream(str) >> temp[0] >> temp[1] >> temp[2] >> temp[3] >> temp[4] >> temp[5] >> temp[6] >> temp[7] >> temp[8];
+    mat = glm::make_mat3(temp);
+    return mat;
+}
 
 namespace ECS
 {

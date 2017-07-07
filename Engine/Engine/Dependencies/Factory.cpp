@@ -2,7 +2,7 @@
 
 void ECS::Factory::Init(const unsigned long maxID)
 {
-    for(int i = 0; i < maxID; i++)
+    for(unsigned long i = 0; i < maxID; i++)
     {
         m_freeIndices.push(i);
     }
@@ -79,44 +79,42 @@ bool ECS::Factory::AddTransformComponent(Entity & e, const ComponentInfo & info)
     int eid = e.GetEID();
 
     std::cout << "Adding Transform Component to Entity: " << eid << std::endl;
-    /*MathFacade mf;
-
-    vec3 position(0);
-    vec3 rotation(0);
-    vec3 scale(1);
-
-    if (componentInfo.find("position") != componentInfo.cend())
-    {
-    position = ToVec3(componentInfo.at("position")[0]);
-    }
-
-    if (componentInfo.find("rotation") != componentInfo.cend())
-    {
-    rotation = ToVec3(componentInfo.at("rotation")[0]);
-    rotation.x = mf.radians(rotation.x);
-    rotation.y = mf.radians(rotation.y);
-    rotation.z = mf.radians(rotation.z);
-    }
-
-    if (componentInfo.find("scale") != componentInfo.cend())
-    {
-    scale = ToVec3(componentInfo.at("scale")[0]);
-    }
-
-    quat rotq = glm::normalize(quat(rotation));
-    //Create component and assign data
-    */
     
-    bool completed = false;
+    ECS::Maths::MathFacade mf;
 
-    /*bool completed = m_transformComponentManager.CreateComponentForEntity(e);
+    ECS::Maths::vec3 position(0);
+    ECS::Maths::vec3 rotation(0);
+    ECS::Maths::vec3 scale(1);
+
+    if (info.find("position") != info.cend())
+    {
+        position = ToVec3(info.at("position")[0]);
+    }
+
+    if (info.find("rotation") != info.cend())
+    {
+        rotation = ToVec3(info.at("rotation")[0]);
+        rotation.x = mf.radians(rotation.x);
+        rotation.y = mf.radians(rotation.y);
+        rotation.z = mf.radians(rotation.z);
+    }
+
+    if (info.find("scale") != info.cend())
+    {
+        scale = ToVec3(info.at("scale")[0]);
+    }
+
+    ECS::Maths::quat rotq = glm::normalize(ECS::Maths::quat(rotation));
+    //Create component and assign data
+    
+    bool completed = m_transformComponentManager.CreateComponentForEntity(e);
 
     if(completed)
     {
         m_transformComponentManager.SetTranslation(e, position);
         m_transformComponentManager.SetScale(e, scale);
         m_transformComponentManager.SetRotation(e, rotq);
-    }*/
+    }
 
     return completed;
 }
