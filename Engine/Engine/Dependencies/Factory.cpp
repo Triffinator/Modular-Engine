@@ -9,9 +9,15 @@ void ECS::Factory::Init(const unsigned long maxID)
 
     m_AddComponentHandlers["TransformComponent"] = std::bind(&Factory::AddTransformComponent, this, std::placeholders::_1, std::placeholders::_2);
     //m_AddComponentHandlers["PhysicsComponent"] = std::bind(&Factory::AddPhysicsComponent, this, std::placeholders::_1, std::placeholders::_2);
-    //m_AddComponentHandlers["RenderComponent"] = std::bind(&Factory::AddRenderComponent, this, std::placeholders::_1, std::placeholders::_2);
-    //m_AddComponentHandlers["CameraComponent"] = std::bind(&Factory::AddCameraComponent, this, std::placeholders::_1, std::placeholders::_2);
-    //m_AddComponentHandlers["AIComponent"] = std::bind(&Factory::AddAIComponent, this, std::placeholders::_1, std::placeholders::_2);
+    m_AddComponentHandlers["RenderComponent"] = std::bind(&Factory::AddRenderComponent, this, std::placeholders::_1, std::placeholders::_2);
+    m_AddComponentHandlers["CameraComponent"] = std::bind(&Factory::AddCameraComponent, this, std::placeholders::_1, std::placeholders::_2);
+    //m_AddComponentHandlers["ScriptComponent"] = std::bind(&Factory::AddScriptComponent, this, std::placeholders::_1, std::placeholders::_2);
+
+    m_RemoveComponentHandlers["TransformComponent"] = std::bind(&Factory::RemoveTransformComponent, this, std::placeholders::_1);
+    //m_RemoveComponentHandlers["PhysicsComponent"] = std::bind(&Factory::AddPhysicsComponent, this, std::placeholders::_1);
+    m_RemoveComponentHandlers["RenderComponent"] = std::bind(&Factory::RemoveRenderComponent, this, std::placeholders::_1);
+    m_RemoveComponentHandlers["CameraComponent"] = std::bind(&Factory::RemoveCameraComponent, this, std::placeholders::_1);
+    //m_RemoveComponentHandlers["ScriptComponent"] = std::bind(&Factory::RemoveScriptComponent, this, std::placeholders::_1);
 }
 
 ECS::Factory::Factory()
@@ -35,6 +41,21 @@ void ECS::Factory::DestroyData(const Entity & e)
     m_transformComponentManager.DestroyComponentData(e);
 }
 
+bool ECS::Factory::RemoveTransformComponent(const Entity & e)
+{
+    return m_transformComponentManager.DestroyComponentData(e);
+}
+
+bool ECS::Factory::RemoveRenderComponent(const Entity & e)
+{
+    return m_renderComponentManager.DestroyComponentData(e);
+}
+
+bool ECS::Factory::RemoveCameraComponent(const Entity & e)
+{
+    return m_cameraComponentManager.DestroyComponentData(e);
+}
+
 void ECS::Factory::DestroyEntity(const Entity & e)
 {
     m_freeIndices.push(e.GetEID());//Add EID to Queue
@@ -42,7 +63,7 @@ void ECS::Factory::DestroyEntity(const Entity & e)
     delete &e;
 }
 
-bool ECS::Factory::AddComponent(Entity & e, const std::string & type, ComponentInfo info)
+bool ECS::Factory::AddComponent(const Entity & e, const std::string & type, ComponentInfo info)
 {
     auto it = m_AddComponentHandlers.find(type);//search component type map for component and function
 
@@ -59,6 +80,13 @@ bool ECS::Factory::AddComponent(Entity & e, const std::string & type, ComponentI
 
 bool ECS::Factory::RemoveComponent(const Entity & e, const std::string & type)
 {
+    auto it = m_RemoveComponentHandlers.find(type);//search component type map for component and function
+
+    if (it != m_RemoveComponentHandlers.cend())//if found
+    {
+        return it->second(e);//Runs function selected
+    }
+
     return false;
 }
 
@@ -67,12 +95,22 @@ ECS::TransformManager & ECS::Factory::GetTransformComponentManager()
     return m_transformComponentManager;
 }
 
+ECS::RenderManager & ECS::Factory::GetRendercomponentManager()
+{
+    return m_renderComponentManager;
+}
+
+ECS::CameraManager & ECS::Factory::GetCameraComponentManger()
+{
+    return m_cameraComponentManager;
+}
+
 ECS::Factory::queue ECS::Factory::GetQueue()
 {
     return m_freeIndices;
 }
 
-bool ECS::Factory::AddTransformComponent(Entity & e, const ComponentInfo & info)
+bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo & info)
 {
     int eid = e.GetEID();
 
@@ -115,4 +153,14 @@ bool ECS::Factory::AddTransformComponent(Entity & e, const ComponentInfo & info)
     }
 
     return completed;
+}
+
+bool ECS::Factory::AddRenderComponent(const Entity & e, const ComponentInfo & info)
+{
+    return false;
+}
+
+bool ECS::Factory::AddCameraComponent(const Entity & e, const ComponentInfo & info)
+{
+    return false;
 }

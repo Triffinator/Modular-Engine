@@ -15,6 +15,9 @@ void ECS::Engine::Awake()
 {
     //Read Configs
     //Create Managers
+
+    m_factory = new ECS::Factory();
+    m_factory->Init(200);
 }
 
 void ECS::Engine::Start()
@@ -23,9 +26,6 @@ void ECS::Engine::Start()
     m_window->Set("Enginey McEngineFace", 1280, 720, 32, false);
     m_window->VSync(1);
     m_window->Apply(true);
-
-    m_factory = new ECS::Factory();
-    m_factory->Init(200);
 
     ECS::Entity * e1 = new ECS::Entity(m_factory->GetNextEID());
     ECS::Entity * e2 = new ECS::Entity(m_factory->GetNextEID());
@@ -104,7 +104,4 @@ void ECS::Engine::Update()
         m_factory->GetTransformComponentManager().IncTranslation(m_entityVector[i], *(vec));
         //m_factory->GetTransformComponentManager().toString(m_entityVector[i]);
     }
-
-    //int pause;
-    //std::cin >> pause;
 }
