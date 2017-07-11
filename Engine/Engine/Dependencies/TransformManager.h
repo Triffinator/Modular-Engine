@@ -1,33 +1,15 @@
 #pragma once
 
 #include <map>
-<<<<<<< HEAD
-
 #include "Entity.h"
-#include "TransformComponent.h"
-=======
 #include <iostream>
-
-#include "Entity.h"
-#include "TransformComponent.h"
 #include "MathFacade.h"
->>>>>>> atriffitt_TransformComponent
 
 namespace ECS
 {
     class TransformManager
     {
-        public:
-<<<<<<< HEAD
-            TransformManager();
-            ~TransformManager();
-
-            void DestroyComponentData(Entity & e);
-
         private:
-            std::map<unsigned long, TransformComponent> * m_dataMap;
-=======
-
             struct InstanceData
             {
                 Maths::vec3 scale;
@@ -36,7 +18,6 @@ namespace ECS
                 Maths::mat4 tranMatrix;
             };
 
-        private:
             typedef std::map<unsigned long, InstanceData> ComponentMap;
             ComponentMap m_transformMap;
 
@@ -204,7 +185,6 @@ namespace ECS
             Maths::vec3* GetTranslation_Ptr(const Entity& e);
 
             TransformManager::InstanceData* GetComponent(unsigned int id);
->>>>>>> atriffitt_TransformComponent
     }; 
 }
 
