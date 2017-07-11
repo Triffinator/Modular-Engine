@@ -20,7 +20,7 @@ namespace ECS
 	        * @brief: get method for the EID
 	        * @return: EID      unsigned long. Entity ID
 	        */
-	        const unsigned long GetEID() { return m_EID; }
+	        unsigned long GetEID() const { return m_EID; }
 
         private:
 	        /**

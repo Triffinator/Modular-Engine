@@ -24,12 +24,19 @@ void ECS::Engine::Start()
     std::cout << *(e1) << std::endl;
     std::cout << *(e2) << std::endl;
 
-    ECS::Factory::ComponentInfo inf;
+    std::map<std::string, std::vector<std::string>> componentData;
 
-    f->AddComponent(*(e1), "TransformComponent", inf);
+    //Populate e1's transform data
+    {
+        componentData["position"].push_back("0 15 0");
+        componentData["scale"].push_back("0 0 0");
+        componentData["rotation"].push_back("0 0 0");
+        f->AddComponent(*(e1), "TransformComponent", componentData);
+        componentData.clear();
+    }
 
-    /*std::cout << "Deleting: " << *(e1) << std::endl;
-    f->DestroyEntity(*(e1));*/
+    std::cout << *(e1) << std::endl; 
+    f->GetTransformComponentManager().toString(*(e1));
 
     int pause;
     std::cin >> pause;
