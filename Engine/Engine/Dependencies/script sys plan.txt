@@ -1,0 +1,5 @@
+Configuration
+
+Config file exists
+Lua script reads config by associative pair, puts pair on stack
+C++ class reads off luaStack, calls correct setter functions for key value
