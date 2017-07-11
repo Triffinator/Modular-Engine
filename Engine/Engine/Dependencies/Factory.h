@@ -106,6 +106,6 @@ namespace ECS
             //bool AddPhysicsComponent(const Entity& e, const ComponentInfo& info);
             //bool AddScriptComponent(const Entity& e, const ComponentInfo& info);
 
-            void DestroyData(Entity & e);
+            void DestroyData(const Entity & e);
     };
 }
