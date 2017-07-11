@@ -179,7 +179,7 @@ namespace ECS
 
             const ComponentMap& GetMap() const;
 
-            void toString(const Entity& e) const;
+            void toString(const Entity& e);
 
             Maths::vec3* GetTranslation_Ptr(unsigned int id);
             Maths::vec3* GetTranslation_Ptr(const Entity& e);

@@ -155,14 +155,17 @@ const ECS::TransformManager::ComponentMap & ECS::TransformManager::GetMap() cons
     return m_transformMap;
 }
 
-void ECS::TransformManager::toString(const Entity & e) const
+void ECS::TransformManager::toString(const Entity & e)
 {
-    std::cerr << "Outputting transform matrix." << std::endl;
-    ECS::Maths::mat4 temptest = m_transformMap.at(e.GetEID()).tranMatrix;
-    std::cerr << temptest[3][0] << ",\t" << temptest[3][1] << ",\t" << temptest[3][2] << ",\t" << temptest[3][3] << std::endl;
-    std::cerr << temptest[2][0] << ",\t" << temptest[2][1] << ",\t" << temptest[2][2] << ",\t" << temptest[2][3] << std::endl;
-    std::cerr << temptest[1][0] << ",\t" << temptest[1][1] << ",\t" << temptest[1][2] << ",\t" << temptest[1][3] << std::endl;
-    std::cerr << temptest[0][0] << ",\t" << temptest[0][1] << ",\t" << temptest[0][2] << ",\t" << temptest[0][3] << std::endl;
+    if(EntityHasComponent(e))
+    {
+        std::cerr << "Outputting transform matrix." << std::endl;
+        ECS::Maths::mat4 temptest = m_transformMap.at(e.GetEID()).tranMatrix;
+        std::cerr << temptest[3][0] << ",\t" << temptest[3][1] << ",\t" << temptest[3][2] << ",\t" << temptest[3][3] << std::endl;
+        std::cerr << temptest[2][0] << ",\t" << temptest[2][1] << ",\t" << temptest[2][2] << ",\t" << temptest[2][3] << std::endl;
+        std::cerr << temptest[1][0] << ",\t" << temptest[1][1] << ",\t" << temptest[1][2] << ",\t" << temptest[1][3] << std::endl;
+        std::cerr << temptest[0][0] << ",\t" << temptest[0][1] << ",\t" << temptest[0][2] << ",\t" << temptest[0][3] << std::endl;
+    }
 }
 
 ECS::Maths::vec3 * ECS::TransformManager::GetTranslation_Ptr(unsigned int id)

@@ -2,12 +2,15 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <chrono>
 
 #include "Factory.h"
 #include "Streams.h"
 
 namespace ECS
 {
+    #define MS_PER_UPDATE 16
+
     class Engine
     {
         public:
@@ -17,11 +20,19 @@ namespace ECS
             void Awake();
             void Start();
 
-            void Update();
-            void FixedUpdate();
-            void Lateupdate();
+            void UpdateLoop();
             
             void End();
             void Sleep();
+
+        private:
+            std::vector<ECS::Entity> m_entityVector;
+            ECS::Factory * m_factory;
+
+            std::chrono::time_point<std::chrono::system_clock> m_previous;
+
+            void Update();
+            void FixedUpdate();
+            void LateUpdate();
     };
 }
