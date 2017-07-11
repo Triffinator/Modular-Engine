@@ -2,9 +2,11 @@
 
 ECS::Script::ScriptHandler::ScriptHandler() 
 {
+	//Initialise Lua
 	luaState = luaL_newstate();
 	luabind::open(luaState);
 	luaL_openlibs(luaState);
+
 }
 
 ECS::Script::ScriptHandler::~ScriptHandler() 
@@ -19,6 +21,11 @@ void ECS::Script::ScriptHandler::PrintError(std::string& variableName, std::stri
 {
 	std::cout << "Error: can't get [" << variableName << "]. " << reason << std::endl;
 }
+
+//void ECS::Script::ScriptHandler::AddToExecQueue(std::string scriptName)
+//{
+//	execQueue.push(scriptName);
+//}
 
 void ECS::Script::ScriptHandler::Awake() 
 {
