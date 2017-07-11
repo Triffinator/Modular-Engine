@@ -6,6 +6,7 @@
 
 #include "Factory.h"
 #include "Streams.h"
+#include "SDLWindow.h"
 
 namespace ECS
 {
@@ -30,6 +31,8 @@ namespace ECS
             ECS::Factory * m_factory;
 
             std::chrono::time_point<std::chrono::system_clock> m_previous;
+
+            ECS::Core::Window * m_window;
 
             void Update();
             void FixedUpdate();

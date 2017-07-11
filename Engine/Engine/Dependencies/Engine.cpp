@@ -2,11 +2,13 @@
 
 ECS::Engine::Engine()
 {
+    m_window = new ECS::Core::SDLWindow();
 }
 
 
 ECS::Engine::~Engine()
 {
+    SAFE_DELETE(m_window);
 }
 
 void ECS::Engine::Awake()
@@ -17,6 +19,11 @@ void ECS::Engine::Awake()
 
 void ECS::Engine::Start()
 {
+    m_window->Initialize();
+    m_window->Set("Enginey McEngineFace", 1280, 720, 32, false);
+    m_window->VSync(1);
+    m_window->Apply(true);
+
     m_factory = new ECS::Factory();
     m_factory->Init(200);
 
