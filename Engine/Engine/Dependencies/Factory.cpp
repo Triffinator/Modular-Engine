@@ -2,11 +2,7 @@
 
 void ECS::Factory::Init(const unsigned long maxID)
 {
-<<<<<<< HEAD
-    for(int i = 0; i < maxID; i++)
-=======
     for(unsigned long i = 0; i < maxID; i++)
->>>>>>> atriffitt_TransformComponent
     {
         m_freeIndices.push(i);
     }
@@ -34,17 +30,15 @@ const unsigned long ECS::Factory::GetNextEID()
     return eid;
 }
 
-void ECS::Factory::DestroyData(Entity & e)
+void ECS::Factory::DestroyData(const Entity & e)
 {
     m_transformComponentManager.DestroyComponentData(e);
 }
 
 void ECS::Factory::DestroyEntity(const Entity & e)
 {
-    Entity temp = e;
-
-    m_freeIndices.push(temp.GetEID());//Add EID to Queue
-    //Destroy Component Data
+    m_freeIndices.push(e.GetEID());//Add EID to Queue
+    DestroyData(e);
     delete &e;
 }
 
@@ -83,39 +77,8 @@ bool ECS::Factory::AddTransformComponent(Entity & e, const ComponentInfo & info)
     int eid = e.GetEID();
 
     std::cout << "Adding Transform Component to Entity: " << eid << std::endl;
-<<<<<<< HEAD
-    /*MathFacade mf;
-
-    vec3 position(0);
-    vec3 rotation(0);
-    vec3 scale(1);
-
-    if (componentInfo.find("position") != componentInfo.cend())
-    {
-    position = ToVec3(componentInfo.at("position")[0]);
-    }
-
-    if (componentInfo.find("rotation") != componentInfo.cend())
-    {
-    rotation = ToVec3(componentInfo.at("rotation")[0]);
-    rotation.x = mf.radians(rotation.x);
-    rotation.y = mf.radians(rotation.y);
-    rotation.z = mf.radians(rotation.z);
-    }
-
-    if (componentInfo.find("scale") != componentInfo.cend())
-    {
-    scale = ToVec3(componentInfo.at("scale")[0]);
-    }
-
-    quat rotq = glm::normalize(quat(rotation));
-    //Create component and assign data
-    */
     
-    bool completed = false;
-
-    /*bool completed = m_transformComponentManager.CreateComponentForEntity(e);
-=======
+    bool completed = m_transformComponentManager.CreateComponentForEntity(e);
     
     ECS::Maths::MathFacade mf;
 
@@ -143,23 +106,13 @@ bool ECS::Factory::AddTransformComponent(Entity & e, const ComponentInfo & info)
 
     ECS::Maths::quat rotq = glm::normalize(ECS::Maths::quat(rotation));
     //Create component and assign data
-    
-    bool completed = m_transformComponentManager.CreateComponentForEntity(e);
->>>>>>> atriffitt_TransformComponent
 
     if(completed)
     {
         m_transformComponentManager.SetTranslation(e, position);
         m_transformComponentManager.SetScale(e, scale);
         m_transformComponentManager.SetRotation(e, rotq);
-<<<<<<< HEAD
-    }*/
-
-    return completed;
-}
-=======
     }
 
     return completed;
 }
->>>>>>> atriffitt_TransformComponent

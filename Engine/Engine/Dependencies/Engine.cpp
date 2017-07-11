@@ -11,6 +11,8 @@ ECS::Engine::~Engine()
 
 void ECS::Engine::Awake()
 {
+    //Read Configs
+    //Create Managers
 }
 
 void ECS::Engine::Start()
@@ -29,7 +31,7 @@ void ECS::Engine::Start()
     //Populate e1's transform data
     {
         componentData["position"].push_back("0 15 0");
-        componentData["scale"].push_back("0 0 0");
+        componentData["scale"].push_back("10 10 10");
         componentData["rotation"].push_back("0 0 0");
         f->AddComponent(*(e1), "TransformComponent", componentData);
         componentData.clear();
@@ -54,10 +56,10 @@ void ECS::Engine::Lateupdate()
 {
 }
 
-void ECS::Engine::Sleep()
+void ECS::Engine::End()
 {
 }
 
-void ECS::Engine::End()
+void ECS::Engine::Sleep()
 {
 }

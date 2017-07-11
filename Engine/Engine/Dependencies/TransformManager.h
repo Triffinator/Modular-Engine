@@ -66,7 +66,7 @@ namespace ECS
             *  @param    e, Entity component should be removed from.
             *  @return    True, if component successfully removed.
             */
-            bool DestroyComponentData(Entity& e);
+            bool DestroyComponentData(const Entity& e);
 
             /**
             *  Returns the number of transform components this manager contains.

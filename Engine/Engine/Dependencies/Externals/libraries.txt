@@ -1,0 +1,1 @@
+$(ProjectDir)\Dependencies\Externals\SDL2_image-2.0.1\lib;$(ProjectDir)\Dependencies\Externals\lua5.1\lib;$(ProjectDir)\Dependencies\Externals\GLEW-1.13.0\lib\Release\Win32;$(ProjectDir)\Dependencies\Externals\SDL2-2.0.4\lib\x86;$(ProjectDir)\Dependencies\Externals\OpenGL\lib;$(ProjectDir)\Dependencies\Externals\OIS\lib;$(ProjectDir)\Dependencies;$(LibraryPath)

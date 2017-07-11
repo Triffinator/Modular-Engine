@@ -21,7 +21,7 @@ namespace ECS
             void FixedUpdate();
             void Lateupdate();
             
-            void Sleep();
             void End();
+            void Sleep();
     };
 }

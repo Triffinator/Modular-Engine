@@ -2,21 +2,6 @@
 
 ECS::TransformManager::TransformManager()
 {
-<<<<<<< HEAD
-}
-
-
-ECS::TransformManager::~TransformManager()
-{
-}
-
-void ECS::TransformManager::DestroyComponentData(Entity & e)
-{
-    unsigned long EID = e.GetEID();
-
-    m_dataMap->erase(EID);
-=======
-    m_transformMap = ComponentMap();
 }
 
 ECS::TransformManager::~TransformManager()
@@ -46,7 +31,7 @@ bool ECS::TransformManager::CreateComponentForEntity(const Entity & e)
     return true;
 }
 
-bool ECS::TransformManager::DestroyComponentData(Entity & e)
+bool ECS::TransformManager::DestroyComponentData(const Entity & e)
 {
     if (!EntityHasComponent(e))
     {
@@ -198,5 +183,4 @@ ECS::TransformManager::InstanceData * ECS::TransformManager::GetComponent(unsign
         return &it->second;
     }
     return nullptr;
->>>>>>> atriffitt_TransformComponent
 }
