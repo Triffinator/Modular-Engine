@@ -14,7 +14,7 @@
 //Managers
 #include "TransformManager.h"
 
-#define greater std::greater<unsigned long>
+//#define greater std::greater<unsigned long>
 
 inline std::istream& operator >> (std::stringstream& str, ECS::Maths::vec3& value)
 {
@@ -64,7 +64,7 @@ namespace ECS
     {
         public:
             typedef std::map<std::string, std::vector<std::string>> ComponentInfo;
-            typedef std::priority_queue<unsigned long, std::vector<unsigned long>, greater> queue;
+            typedef std::priority_queue<unsigned long, std::vector<unsigned long>, std::greater<unsigned long>> queue;
             typedef std::function<bool(Entity&, const ComponentInfo&)> AddComponentHandler;
  
             void Init(const unsigned long maxID);
