@@ -3,6 +3,23 @@
 #include <map>
 
 #include "Entity.h"
+#include "MathFacade.h"
+
+#define ECS_INIT_POSITION  (ECS::Maths::vec3(0,0,0))
+#define ECS_INIT_FORWARD   (ECS::Maths::vec3(0.0f, 0.0f, -1.0f))
+#define ECS_INIT_UP        (ECS::Maths::vec3(0.0f, 1.0f, 0.0f))
+
+#define ECS_INIT_ASPECT    (16.0f/9.0f)
+#define ECS_INIT_FOV       54.0f
+#define ECS_INIT_NEAR      0.1f
+#define ECS_INIT_FAR       5000.0f
+
+#define ECS_MIN_FOV        5.0f
+#define ECS_MAX_FOV        180.0f
+#define ECS_MIN_ASPECT     0.02f
+#define ECS_MAX_ASPECT     50.0f
+#define ECS_MIN_NEAR       0.1f
+#define ECS_MAX_FAR        2000.0f
 
 namespace ECS
 {
@@ -39,6 +56,8 @@ namespace ECS
 
             ECS::Maths::mat4 GetViewMatrix(const Entity& e);
 
+            ECS::Maths::mat4 GetProjectionMatrix(const Entity& e);
+
             ECS::Maths::vec3 GetPosition(const Entity& e);
 
             ECS::Maths::vec3 GetForward(const Entity& e);
@@ -71,7 +90,7 @@ namespace ECS
 
             void Move(const Entity& e, ECS::Maths::vec3 translation);
 
-            void Look(const Entity& e, ECS::Maths::vec3 eulerDelta);
+            void Look(const Entity & e, ECS::Maths::vec3 eulerDelta, ECS::Maths::vec3 up_forced);
 
             const ComponentMap& GetMap() const;
     };
