@@ -56,6 +56,11 @@ bool ECS::Factory::RemoveCameraComponent(const Entity & e)
     return m_cameraComponentManager.DestroyComponentData(e);
 }
 
+bool ECS::Factory::DataHasProperty(const ComponentInfo & info, std::string field)
+{
+    return (info.find(field) != info.cend());
+}
+
 void ECS::Factory::DestroyEntity(const Entity & e)
 {
     m_freeIndices.push(e.GetEID());//Add EID to Queue
@@ -111,11 +116,7 @@ ECS::Factory::queue ECS::Factory::GetQueue()
 }
 
 bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo & info)
-{
-    int eid = e.GetEID();
-
-    std::cout << "Adding Transform Component to Entity: " << eid << std::endl;
-    
+{ 
     bool completed = m_transformComponentManager.CreateComponentForEntity(e);
     
     ECS::Maths::MathFacade mf;
@@ -124,12 +125,12 @@ bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo &
     ECS::Maths::vec3 rotation(0);
     ECS::Maths::vec3 scale(1);
 
-    if (info.find("position") != info.cend())
+    if (DataHasProperty(info, "position"))
     {
         position = ToVec3(info.at("position")[0]);
     }
 
-    if (info.find("rotation") != info.cend())
+    if (DataHasProperty(info, "rotation"))
     {
         rotation = ToVec3(info.at("rotation")[0]);
         rotation.x = mf.radians(rotation.x);
@@ -137,7 +138,7 @@ bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo &
         rotation.z = mf.radians(rotation.z);
     }
 
-    if (info.find("scale") != info.cend())
+    if (DataHasProperty(info, "scale"))
     {
         scale = ToVec3(info.at("scale")[0]);
     }
@@ -147,6 +148,7 @@ bool ECS::Factory::AddTransformComponent(const Entity & e, const ComponentInfo &
 
     if(completed)
     {
+
         m_transformComponentManager.SetTranslation(e, position);
         m_transformComponentManager.SetScale(e, scale);
         m_transformComponentManager.SetRotation(e, rotq);
@@ -162,5 +164,32 @@ bool ECS::Factory::AddRenderComponent(const Entity & e, const ComponentInfo & in
 
 bool ECS::Factory::AddCameraComponent(const Entity & e, const ComponentInfo & info)
 {
-    return false;
+    bool completed = m_cameraComponentManager.CreateComponentForEntity(e);
+
+    ECS::Maths::vec3 position, forward, up;
+
+    std::stringstream dataInput;
+
+    if(DataHasProperty(info, "position"))
+    {
+        dataInput = std::stringstream(info.at("position")[0]);
+        dataInput >> position;
+        m_cameraComponentManager.SetPosition(e, position);
+    }
+
+    if (DataHasProperty(info, "forward"))
+    {
+        dataInput = std::stringstream(info.at("forward")[0]);
+        dataInput >> forward;
+        m_cameraComponentManager.SetForward(e, forward);
+    }
+
+    if (DataHasProperty(info, "up"))
+    {
+        dataInput = std::stringstream(info.at("up")[0]);
+        dataInput >> up;
+        m_cameraComponentManager.SetUp(e, up);
+    }
+
+    return completed;
 }

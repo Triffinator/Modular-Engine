@@ -117,5 +117,6 @@ namespace ECS
             //bool RemovePhysicsComponent(const Entity & e);
             //bool RemoveScriptComponent(const Entity & e);
 
+            bool DataHasProperty(const ComponentInfo & info, std::string field);
     };
 }

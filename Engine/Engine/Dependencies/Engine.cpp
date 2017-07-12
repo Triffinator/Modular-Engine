@@ -42,13 +42,13 @@ void ECS::Engine::Start()
         componentData["rotation"].push_back("0 0 0");
         m_factory->AddComponent(*(e1), "TransformComponent", componentData);
         componentData.clear();
+
+        componentData["position"].push_back("0 0 0");
+        m_factory->AddComponent(*(e1), "CameraComponent", componentData);
     }
 
     m_entityVector.push_back(*(e1));
     m_entityVector.push_back(*(e2));
-
-    std::cout << *(e1) << std::endl; 
-    m_factory->GetTransformComponentManager().toString(*(e1));
 
     m_previous = std::chrono::system_clock::now();
 }

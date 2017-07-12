@@ -40,8 +40,7 @@ bool ECS::CameraManager::CreateComponentForEntity(const Entity & e)
             ECS_INIT_FAR
         );
 
-        m_cameraMap.at(e.GetEID()) = inst;
-
+        m_cameraMap[e.GetEID()] = inst;
         return true;
     }                   
 }
