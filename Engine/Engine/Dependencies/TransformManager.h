@@ -9,7 +9,7 @@ namespace ECS
 {
     class TransformManager
     {
-        private:
+        public:
             struct InstanceData
             {
                 Maths::vec3 scale;
@@ -18,10 +18,11 @@ namespace ECS
                 Maths::mat4 tranMatrix;
             };
 
+         private:
             typedef std::map<unsigned long, InstanceData> ComponentMap;
             ComponentMap m_transformMap;
 
-        public:
+         public:
             /**
             *  Component manager constructor.
             *
