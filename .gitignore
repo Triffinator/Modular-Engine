@@ -43,7 +43,6 @@ Engine/Engine.VC.db
 Engine/Engine/Engine.vcxproj
 Engine/Engine/Engine.vcxproj.filters
 /Engine/Engine/Debug/*.log
-/Engine/Engine/Dependencies/*.h
 /Engine/Engine/Debug/Engine.tlog/*.tlog
 /Engine/Engine/Debug/Engine.tlog/*.lastbuildstate
 /Engine/Engine/Debug/vc140.pdb
