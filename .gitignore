@@ -37,7 +37,7 @@
 *.filters
 *.db
 *.suo
-*/Debug
+\Engine\Engine\Debug\*
 Engine/.vs/Engine/v14/.suo
 Engine/Engine.VC.db
 Engine/Engine/Engine.vcxproj
@@ -47,3 +47,8 @@ Engine/Engine/Engine.vcxproj.filters
 /Engine/Engine/Debug/Engine.tlog/*.lastbuildstate
 /Engine/Engine/Debug/vc140.pdb
 /Engine/Engine/Engine.vcxproj.user
+*.tlog
+*.pdb
+*.log
+*.ilk
+*.idb
