@@ -2,23 +2,30 @@
 
 ECS::Engine::Engine()
 {
+    m_window = new ECS::Core::SDLWindow();
 }
 
 
 ECS::Engine::~Engine()
 {
+    SAFE_DELETE(m_window);
 }
 
 void ECS::Engine::Awake()
 {
     //Read Configs
     //Create Managers
+
+    m_factory = new ECS::Factory();
+    m_factory->Init(200);
 }
 
 void ECS::Engine::Start()
 {
-    m_factory = new ECS::Factory();
-    m_factory->Init(200);
+    m_window->Initialize();
+    m_window->Set("Enginey McEngineFace", 1280, 720, 32, false);
+    m_window->VSync(1);
+    m_window->Apply(true);
 
     ECS::Entity * e1 = new ECS::Entity(m_factory->GetNextEID());
     ECS::Entity * e2 = new ECS::Entity(m_factory->GetNextEID());
@@ -35,13 +42,13 @@ void ECS::Engine::Start()
         componentData["rotation"].push_back("0 0 0");
         m_factory->AddComponent(*(e1), "TransformComponent", componentData);
         componentData.clear();
+
+        componentData["position"].push_back("0 0 0");
+        m_factory->AddComponent(*(e1), "CameraComponent", componentData);
     }
 
     m_entityVector.push_back(*(e1));
     m_entityVector.push_back(*(e2));
-
-    std::cout << *(e1) << std::endl; 
-    m_factory->GetTransformComponentManager().toString(*(e1));
 
     m_previous = std::chrono::system_clock::now();
 }
@@ -97,7 +104,4 @@ void ECS::Engine::Update()
         m_factory->GetTransformComponentManager().IncTranslation(m_entityVector[i], *(vec));
         //m_factory->GetTransformComponentManager().toString(m_entityVector[i]);
     }
-
-    //int pause;
-    //std::cin >> pause;
 }
